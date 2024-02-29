@@ -1,24 +1,28 @@
 # EcoStock Web Version
 
+## Descrição
 
-Se encontra em seu processo de *desenvolvimento inicial*.
+O EcoStock Web Version é uma aplicação web desenvolvida em Python usando o framework Django. Ele permite aos usuários criar contas, adicionar, remover e editar produtos em um estoque, além de realizar pesquisas sobre os produtos existentes. Os produtos são armazenados tanto em um banco de dados Django quanto em tags HTML para exibição ao usuário.
 
-Esta versão está sendo atualizada diariamente.
+Este projeto está em constante atualização e novas atualizações estão sendo adicionadas diariamente.
 
+Este é um projeto pessoal em **fase de desenvolvimento inicial**, destinado a ser uma aplicação web para gerenciamento de estoque.
 
+## Tecnologias Sendo Utilizadas
 
-Principais Funcionalidades:
+- Python
+- Django
+- HTML5
+- CSS
+- Bootstrap5
+- JavaScript
 
-  Criar Conta;
-  
-  Entrar na Conta;
-  
-  Adicionar Produto (código, nome, quantidade, valor): Os produtos ficam armazenados tanto em uma database do próprio Django quanto em tags <tr> para ser visível ao usuário;
+## Funcionalidades Principais
 
-  Remover Produto: Selecione o checkbox da respectiva fileira e remova;
-    
-  Editar Produto: Selecione o checkbox da respectiva fileira e edite-a;
-    
-  Pesquisar: Será possível pesquisar produtos pelos seus valores como: código, nome, quantidade ou valor;
-
-  Caso a pagina lote de dados, será possível a paginação.
+- Criar Conta
+- Entrar na Conta
+- Adicionar Produto (código, nome, quantidade, valor)
+- Remover Produto
+- Editar Produto
+- Pesquisar Produto
+- Paginação (caso a página de dados se torne extensa)
