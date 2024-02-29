@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Log In {% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="post">
+        <h2>Log In</h2>
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Log In</button>
+    </form>
+    <button type="submit" onclick="window.location.href='/welcome'">Ainda não possuo conta</button>
+</div>
+{% endblock %}

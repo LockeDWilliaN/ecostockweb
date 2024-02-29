@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+        <meta charset="utf-8">
+        <title> {%block title%} EcoStock {%endblock%}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "style.css" %}">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <main>
+            {%block content%}
+            {% endblock %}
+        </main>
+    </body>
+</html>
