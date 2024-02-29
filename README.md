@@ -19,10 +19,12 @@ Este é um projeto pessoal em **fase de desenvolvimento inicial**, destinado a s
 
 ## Funcionalidades Principais
 
-- Criar Conta
-- Entrar na Conta
-- Adicionar Produto (código, nome, quantidade, valor)
-- Remover Produto
-- Editar Produto
-- Pesquisar Produto
-- Paginação (caso a página de dados se torne extensa)
+- Criar Conta (processo de desenvolvimento iniciado).
+- Entrar na Conta (processo de desenvolvimento iniciado).
+- Adicionar Produto (código, nome, quantidade, valor) (processo de desenvolvimento iniciado).
+- Remover Produto (processo de desenvolvimento ainda não iniciado).
+- Editar Produto (processo de desenvolvimento ainda não iniciado).
+- Pesquisar Produto (processo de desenvolvimento ainda não iniciado).
+- Paginação (caso a página de dados se torne extensa) (processo de desenvolvimento ainda não iniciado).
+
+Qualquer nova atualização será publicada e o README atualizado.
