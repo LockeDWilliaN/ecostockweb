@@ -7,8 +7,8 @@ class ProdutoForm(forms.ModelForm):
         model = Produto
         fields = ['codigo', 'nome', 'quantidade', 'valor']
         widgets = {
-        'codigo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Código'}),
-        'nome': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nome'}),
-        'quantidade': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Quantidade'}),
-        'valor': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Valor'}),
+        'codigo': forms.TextInput(attrs={'class': 'form-control','style': 'width: 400px; margin: 20px;', 'placeholder': 'Código'}),
+        'nome': forms.TextInput(attrs={'class': 'form-control','style': 'width: 400px; margin: 20px;', 'placeholder': 'Nome'}),
+        'quantidade': forms.NumberInput(attrs={'class': 'form-control','style': 'width: 400px; margin: 20px;', 'placeholder': 'Quantidade'}),
+        'valor': forms.NumberInput(attrs={'class': 'form-control','style': 'width: 400px; margin: 20px;', 'placeholder': 'Valor'}),
     }

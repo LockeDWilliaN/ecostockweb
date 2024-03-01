@@ -3,11 +3,11 @@
 {%block title%} Home {% endblock %}
 
 {% load static %}
+
 {% block content %}
-
 {% if user.is_authenticated%}
-
 <script>
+
   document.addEventListener("DOMContentLoaded", function(){
     const button = document.querySelector("#addbutton")
     const modal = document.querySelector("#addModal")
@@ -17,11 +17,27 @@
     }
   })
 
+  document.addEventListener("DOMContentLoaded", function(){
+    const button = document.querySelector("#remvbutton")
+    const modal = document.querySelector("#removeModal")
+
+    button.onclick = function (){
+      modal.showModal()
+    }
+  })
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const removeButton = document.querySelector("#remove-button");
+    const removeForm = document.querySelector("#remove-form");
+
+    removeButton.addEventListener("click", function() {
+        removeForm.submit();
+    });
+  });
 
 </script>
 
 <link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
-
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand" href=>EcoStock</a>
@@ -77,21 +93,44 @@
                                     {% csrf_token %}
                                     <div class="form-group">
                                       <div style="margin: 20px;">
-                                        <h5 style="text-align: center;">
+                                        <h4 style="text-align: center;">
                                           <label for="codigo">Preencha</label>
-                                        </h5>
+                                        </h4>
+                                        <br>
                                         {{form.as_p}}
                                       </div>
                                       <div class="modal-footer" style="justify-content: space-between; margin-top: 5px;">
-                                        <button type="submit" class="btn btn-outline-success btn-sm" style="margin-left: 40px;">Adicionar</button>
-                                        <button type="button" class="btn btn-outline-danger btn-sm" style="margin-right: 40px;" data-bs-dismiss="modal" onclick="addModal.close()">Fechar</button>
+                                        <button name ="additem" type="submit" class="btn btn-outline-success" style="margin-left: 40px;">Adicionar</button>
+                                        <button type="button" class="btn btn-outline-danger " style="margin-right: 40px;" data-bs-dismiss="modal" onclick="addModal.close()">Fechar</button>
                                       </div>
                                     </div>
                                   </form>
                                 </div>
                               </div>
                             </dialog>
-                          <button type="button" class="btn btn-danger">Remover</button>
+                          <button id="remvbutton"type="button" class="btn btn-danger">Remover</button>
+                            <dialog id="removeModal">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">  
+                                  <div class="modal-header" style="justify-content: center;">
+                                    <h3 class="modal-title">Remover</h3>
+                                  </div>
+                                    <div class="form-group">
+                                      <div style="margin: 20px;">
+                                        <br>
+                                        <h4 style="text-align: center;">Após remover não é possível restaurar.</h4>
+                                        <br>
+                                        <h4 style="text-align: center;">Você tem certeza?</h4>
+                                        <br>                                          
+                                      </div>
+                                      <div class="modal-footer" style="justify-content: space-between; margin-top: 5px;">
+                                    </div>
+                                    <button type="button" class="btn btn-danger" id="remove-button">Remover</button>
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="removeModal.close()">Fechar</button>      
+                                  </form>
+                                </div>
+                              </div>
+                            </dialog>
                           <button type="button" class="btn btn-info">Editar</button>
                         </div>
                     </div>
@@ -100,26 +139,33 @@
           </div>
       </div>
   </div>
-        <table class="table table-hover">
-            <thead>
-              <tr class="table-active">
+  <form method="post" id="remove-form">
+    {% csrf_token %}
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-active">
                 <th scope="col"> Código </th>
                 <th scope="col"> Nome </th>
                 <th scope="col"> Quantidade </th>
                 <th scope="col"> Valor </th>
                 <th scope="col"> Selecionar </th>
-              </tr>
-            </thead>
-              {% for produto in produtos %}
-                <tr class="table-secondary"> 
-                  <th scope="row">{{produto.codigo}}</th>
-                  <td>{{produto.nome}}</td>
-                  <td>{{produto.quantidade}}</td>
-                  <td>R${{produto.valor}}</td>
-                  <td><input type="checkbox" name="produtos_selecionados" value="{{ produto.id }}"></td>            
-                </tr>
-              {% endfor %}
-        </table>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in produtos %}
+            <tr class="table-secondary">
+                <th scope="row">{{produto.codigo}}</th>
+                <td>{{produto.nome}}</td>
+                <td>{{produto.quantidade}}</td>
+                <td>R${{produto.valor}}</td>
+                <td><input type="checkbox" name="produtos_selecionados" value="{{ produto.id }}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <input type="hidden" name="action" id="action" value="">
+</form>
+
     </div>
     <div>
     </div>

@@ -20,10 +20,20 @@ def getHome(request):
 
 def home(request):
     if request.method == 'POST':
-        form = ProdutoForm(request.POST)
-        if form.is_valid():
-            form.save()
+        if 'additem' in request.POST:
+            form = ProdutoForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('/home/')
+        
+        elif 'removeItem':
+            selected_items = request.POST.getlist('produtos_selecionados')
+            Produto.objects.filter(id__in=selected_items).delete()
             return redirect('/home/')
+
+        elif 'editItem':
+            pass
+            
     else: 
         form = ProdutoForm()
         
