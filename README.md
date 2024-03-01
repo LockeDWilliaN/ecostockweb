@@ -28,3 +28,4 @@ Este é um projeto pessoal em **fase de desenvolvimento inicial**, destinado a s
 - Paginação (caso a página de dados se torne extensa) (processo de desenvolvimento ainda não iniciado).
 
 Qualquer nova atualização será publicada e o README atualizado.
+- 01/03/2024 Pequenas alterações e adicionada a função de "remover"
