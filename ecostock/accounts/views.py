@@ -19,23 +19,31 @@ def getHome(request):
     return render(request, 'gethome.html')
 
 def home(request):
+    form = ProdutoForm()
+    
     if request.method == 'POST':
         if 'additem' in request.POST:
-            form = ProdutoForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('/home/')
-        
-        elif 'removeItem':
-            selected_items = request.POST.getlist('produtos_selecionados')
-            Produto.objects.filter(id__in=selected_items).delete()
+            pk = request.POST.get('additem')
+            if not pk:    
+                form = ProdutoForm(request.POST)
+            else:
+                    produto = Produto.objects.get(id=pk)
+                    form = ProdutoForm(request.POST, instance=produto)
+            form.save()
             return redirect('/home/')
-
-        elif 'editItem':
-            pass
             
+        elif 'delete' in request.POST:
+            pk = request.POST.get('delete')
+            produto = Produto.objects.get(id=pk)
+            produto.delete()
+            return redirect('/home/')
+        
+        elif 'edit' in request.POST:
+            pk = request.POST.get('edit')
+            produto = Produto.objects.get(id=pk)
+            form = ProdutoForm(instance=produto)
     else: 
         form = ProdutoForm()
         
     produtos = Produto.objects.all()
-    return render(request, 'home.html', {'form':form, 'produtos': produtos})
+    return render(request, 'home.html', {'form': form, 'produtos': produtos})
